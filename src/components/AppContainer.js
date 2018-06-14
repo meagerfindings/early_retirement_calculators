@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import InputForm from "./InputForm";
-import FiStages from "./FiStages";
+import FiStagesContainer from "./FiStagesContainer";
 
 class AppContainer extends Component {
     constructor(props) {
@@ -23,12 +23,11 @@ class AppContainer extends Component {
                 <InputForm core_expenses={this.state.core_expenses}
                            comfortable_expenses={this.state.comfortable_expenses}
                            onExpenseInput={this.handleExpenseInput}/>
-                ${this.state.current_savings}
             </div>
             <h3>FI Calculations</h3>
-            <FiStages current={this.state.current_savings}
-                      core={this.state.core_expenses}
-                      comfort={this.state.comfortable_expenses} />
+            <FiStagesContainer current={this.state.current_savings}
+                               core={this.state.core_expenses}
+                               comfort={this.state.comfortable_expenses} />
             <i>*Assumes 8% ROI.</i>
         </div>
     }

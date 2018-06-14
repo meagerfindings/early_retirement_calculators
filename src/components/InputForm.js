@@ -5,6 +5,7 @@ import FormControl from "react-bootstrap/es/FormControl";
 
 class InputForm extends Component {
     //TODO: Figure out why backspace in Input Form fields freezes browser and without any DevConsole errors.
+    //TODO: Add adjustable ROI.
 
     handleInput = (e) => {
         this.props.onExpenseInput({[e.target.name]: e.target.value})

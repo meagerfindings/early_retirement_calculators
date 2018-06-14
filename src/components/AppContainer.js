@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ListGroup from "react-bootstrap/es/ListGroup";
 import ListGroupItem from "react-bootstrap/es/ListGroupItem";
 import InputForm from "./InputForm";
+import FiProgressBar from "./FiProgressBar";
 
 class AppContainer extends Component {
     constructor(props) {
@@ -9,6 +10,39 @@ class AppContainer extends Component {
             this.state = {
                 core_expenses: 35970,
                 comfortable_expenses: 50000,
+                current_savings: 0,
+                fiStages: {
+                    halfFi: {
+                        name: "Half Fi",
+                        multiplier: 12.5,
+                        type: "comfort",
+                        description: "12.5x comfortable expenses"
+                    },
+                    leanFi: {
+                        name: "Lean Fi",
+                        multiplier: 25,
+                        type: "core",
+                        description: "25x core expenses"
+                    },
+                    flexFi: {
+                        name: "Flex Fi",
+                        multiplier: 20,
+                        type: "comfort",
+                        description: "20x comfortable expenses"
+                    },
+                    fi: {
+                        name: "Fi",
+                        multiplier: 25,
+                        type: "comfort",
+                        description: "25x comfortable expenses"
+                    },
+                    fatFi: {
+                        name: "Fat Fi",
+                        multiplier: 30,
+                        type: "comfort",
+                        description: "30x comfortable expenses"
+                    }
+                }
             }
     }
 
@@ -50,16 +84,18 @@ class AppContainer extends Component {
                 <InputForm core_expenses={this.state.core_expenses}
                            comfortable_expenses={this.state.comfortable_expenses}
                            onExpenseInput={this.handleExpenseInput}/>
+                ${this.state.current_savings}
             </div>
             <h3>FI Calculations</h3>
             <ListGroup>
                 <ListGroupItem>
                     <h4>Half FI: ${nf.format(halfFi)}</h4>
                     <i>12.5x comfortable expenses</i>
+                   <FiProgressBar current={this.state.current_savings}
+                                  goal={halfFi} />
                     <div>
                         <p>Interest alone will carry you to Lean Fi in {halfInterest.years} years with
-                            ${halfInterest.amount}. <br/>
-                            <i>*Assumes 8% ROI.</i>
+                            ${halfInterest.amount}*. <br/>
                         </p>
                     </div>
                 </ListGroupItem>
@@ -68,8 +104,7 @@ class AppContainer extends Component {
                     <i>25x core expenses</i>
                     <div>
                         <p>Interest alone will carry you to Flex Fi in {leanInterest.years} years, with
-                            ${leanInterest.amount}. <br/>
-                            <i>*Assumes 8% ROI.</i>
+                            ${leanInterest.amount}*. <br/>
                         </p>
                     </div>
                 </ListGroupItem>
@@ -78,8 +113,7 @@ class AppContainer extends Component {
                     <i>20x comfortable expenses</i>
                     <div>
                         <p>Interest alone will carry you to Fi in {flexInterest.years} years,
-                            with {flexInterest.amount}. <br/>
-                            <i>*Assumes 8% ROI.</i>
+                            with {flexInterest.amount}*. <br/>
                         </p>
                     </div>
                 </ListGroupItem>
@@ -88,8 +122,7 @@ class AppContainer extends Component {
                     <i>25x comfortable expenses</i>
                     <div>
                         <p>Interest alone will carry you to Fat Fi in {fiInterest.years} years, with
-                            ${fiInterest.amount}. <br/>
-                            <i>*Assumes 8% ROI.</i>
+                            ${fiInterest.amount}*. <br/>
                         </p>
                     </div>
                 </ListGroupItem>
@@ -98,6 +131,7 @@ class AppContainer extends Component {
                     <i>30x comfortable expenses</i>
                 </ListGroupItem>
             </ListGroup>
+            <i>*Assumes 8% ROI.</i>
         </div>
     }
 

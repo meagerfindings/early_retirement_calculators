@@ -4,10 +4,14 @@ import ControlLabel from "react-bootstrap/es/ControlLabel";
 import FormControl from "react-bootstrap/es/FormControl";
 
 class InputForm extends Component {
-    //TODO: Add adjustable ROI.
 
     handleInput = (e) => {
         this.props.onExpenseInput({[e.target.name]: e.target.value})
+    };
+
+    handlePercentageInput = (e) => {
+        let value = e.target.value / 100;
+        this.props.onExpenseInput({[e.target.name]: value})
     };
 
     render(){
@@ -20,16 +24,30 @@ class InputForm extends Component {
                              // defaultValue={this.props.core_expenses}
                              placeholder={"Enter your annual core expense amount, non-discretionary spending. (Initial Assumption: $" + nf.format(this.props.core_expenses) + ")"}
                              onChange={this.handleInput}/>
+                <br/>
                 <ControlLabel>Annual Comfortable Expenses</ControlLabel>
                 <FormControl type="number"
                              name='comfortable_expenses'
                              placeholder={"Enter your annual comfortable expense amount. This includes your discretionary spending. (Initial Assumption: $" + nf.format(this.props.comfortable_expenses) + ")"}
                              onChange={this.handleInput}/>
+                <br/>
                 <ControlLabel>Current Savings</ControlLabel>
                 <FormControl type="number"
                              name='current_savings'
                              placeholder={"Enter your current savings or net worth."}
                              onChange={this.handleInput}/>
+                <br/>
+                <ControlLabel>Rate of Return on Investments %</ControlLabel>
+                <FormControl type="number"
+                             name='roi'
+                             placeholder={"Enter preferred Rate of Return on Investments. (Initial Assumption is 8%)"}
+                             onChange={this.handlePercentageInput}/>
+                <br/>
+                <ControlLabel>Safe Withdrawal Rate %</ControlLabel>
+                <FormControl type="number"
+                             name='swr'
+                             placeholder={"Enter preferred Safe Withdrawal Rate. (Initial Assumption is 4%)"}
+                             onChange={this.handlePercentageInput}/>
             </FormGroup>
         </form>
     }

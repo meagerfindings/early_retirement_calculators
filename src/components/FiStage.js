@@ -10,8 +10,11 @@ class FiStage extends Component {
         let years = 0;
 
         if (current > 0 && future > 0) {
-            for (years; temp <= future; years++) {
-                temp = (temp * this.props.roi) + temp;
+            if (typeof current === "undefined" || typeof current === "undefined") {
+            } else {
+                for (years; temp <= future; years++) {
+                    temp = (temp * this.props.roi) + temp;
+                }
             }
         }
 

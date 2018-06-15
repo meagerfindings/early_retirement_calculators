@@ -8,7 +8,7 @@ class AppContainer extends Component {
         this.state = {
             core_expenses: 36000,
             comfortable_expenses: 50000,
-            current_savings: 3789+25000,
+            current_savings: 0,
             roi: .08,
             swr: .04
             }
@@ -30,7 +30,7 @@ class AppContainer extends Component {
                            comfortable_expenses={this.state.comfortable_expenses}
                            onExpenseInput={this.handleExpenseInput}/>
             </div>
-            <h3>FI Calculations</h3>
+            <h3>Financial Independence Stages</h3>
             <FiStagesContainer current={this.state.current_savings}
                                core={this.state.core_expenses}
                                comfort={this.state.comfortable_expenses}

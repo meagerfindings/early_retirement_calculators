@@ -3,8 +3,15 @@ import ProgressBar from "react-bootstrap/es/ProgressBar";
 
 class FiProgressBar extends Component {
     static roundPercent(value) {
-        if (value >= 1) return 100;
-        return Math.round(value * 100 * 10) / 10
+        if (value === Infinity) {
+            return 0;
+        } else if (isNaN(value)) {
+            return 0;
+        } else if (value >= 1) {
+            return 100;
+        } else {
+            return Math.round(value * 100 * 10) / 10
+        }
     }
 
     render(){

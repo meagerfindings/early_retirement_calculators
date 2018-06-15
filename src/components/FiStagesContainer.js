@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ListGroup from "react-bootstrap/es/ListGroup";
 import FiStage from "./FiStage";
 import Grid from "react-bootstrap/es/Grid";
 import Row from "react-bootstrap/es/Row";
@@ -128,8 +127,8 @@ class FiStagesContainer extends Component {
                                       multiplier={stage.multiplier}
                                       next_stage={stages[stage.nextStage]}
                                       current={this.props.current}
-                                      core={this.props.core}
-                                      comfort={this.props.comfort}
+                                      core={this.props.core || undefined}
+                                      comfort={this.props.comfort || undefined}
                                       swr_display={stage.display_swr}
                                       progress_display={stage.display_goal_progress}
                                       growth_to_next_display={stage.display_goal_interest}

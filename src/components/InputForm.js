@@ -4,7 +4,6 @@ import ControlLabel from "react-bootstrap/es/ControlLabel";
 import FormControl from "react-bootstrap/es/FormControl";
 
 class InputForm extends Component {
-    //TODO: Figure out why backspace in Input Form fields freezes browser and without any DevConsole errors.
     //TODO: Add adjustable ROI.
 
     handleInput = (e) => {
@@ -18,6 +17,7 @@ class InputForm extends Component {
                 <ControlLabel>Annual Core Expenses</ControlLabel>
                 <FormControl type="number"
                              name='core_expenses'
+                             // defaultValue={this.props.core_expenses}
                              placeholder={"Enter your annual core expense amount, non-discretionary spending. (Initial Assumption: $" + nf.format(this.props.core_expenses) + ")"}
                              onChange={this.handleInput}/>
                 <ControlLabel>Annual Comfortable Expenses</ControlLabel>

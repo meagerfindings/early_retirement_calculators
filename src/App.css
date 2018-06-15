@@ -1,5 +1,5 @@
 .App {
- padding: 20px;
+    padding: 20px;
 }
 
 .fi-Single-Stage {
@@ -7,7 +7,7 @@
     padding: 2px;
 }
 .fi-Stages-Container {
-    alignment: center;
+    /*alignment: center;*/
 }
 
 .fi-stage-growth-to-next-false {

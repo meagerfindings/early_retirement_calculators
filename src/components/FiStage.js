@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import ListGroupItem from "react-bootstrap/es/ListGroupItem";
 import FiProgressBar from "./FiProgressBar";
-import Row from "react-bootstrap/es/Row";
 import Col from "react-bootstrap/es/Col";
 
 class FiStage extends Component {
@@ -11,8 +9,10 @@ class FiStage extends Component {
         let temp = current;
         let years = 0;
 
-        for (years; temp <= future; years++) {
-            temp = (temp * this.props.roi) + temp;
+        if (current > 0 && future > 0) {
+            for (years; temp <= future; years++) {
+                temp = (temp * this.props.roi) + temp;
+            }
         }
 
         return {
@@ -33,6 +33,9 @@ class FiStage extends Component {
         } else {
             stage_expenses = this.props.comfort;
         }
+        if (typeof stage_expenses === 'undefined') {
+            stage_expenses = 0.0001;
+        }
 
         let next_expenses;
 
@@ -42,13 +45,17 @@ class FiStage extends Component {
             next_expenses = this.props.comfort;
         }
 
+        if (typeof next_expenses === 'undefined') {
+            next_expenses = 0.0001;
+        }
+
         let stage_amount = stage_expenses * this.props.multiplier;
         let next_stage_amount = next_expenses * this.props.next_stage.multiplier;
         let stage_interest = this.calculateInterestYears(stage_amount, next_stage_amount);
 
         return <Col xs={4} md={6} lg={6}>
             <div className="fi-Single-Stage">
-                <h3>{this.props.name}: ${nf.format(stage_amount)}</h3>
+                <h4>{this.props.name}: ${nf.format(stage_amount)}</h4>
                 <i>{this.props.description}</i>
                 <div className={"fi-stage-swr-" + this.props.swr_display}>
                     <p>Annual safe withdrawal rate: ${

@@ -34,19 +34,19 @@ class InputForm extends Component {
                 <ControlLabel>Current Savings</ControlLabel>
                 <FormControl type="number"
                              name='current_savings'
-                             placeholder={"Enter your current savings or net worth."}
+                             placeholder={"Enter your current savings or net worth. (Initial Assumption: $" + nf.format(this.props.current_savings) + ")"}
                              onChange={this.handleInput}/>
                 <br/>
                 <ControlLabel>Rate of Return on Investments %</ControlLabel>
                 <FormControl type="number"
                              name='roi'
-                             placeholder={"Enter preferred Rate of Return on Investments. (Initial Assumption is 8%)"}
+                             placeholder={"Enter preferred Rate of Return on Investments. (Initial Assumption: " + nf.format(this.props.roi*100) + "%)"}
                              onChange={this.handlePercentageInput}/>
                 <br/>
                 <ControlLabel>Safe Withdrawal Rate %</ControlLabel>
                 <FormControl type="number"
                              name='swr'
-                             placeholder={"Enter preferred Safe Withdrawal Rate. (Initial Assumption is 4%)"}
+                             placeholder={"Enter preferred Safe Withdrawal Rate. (Initial Assumption: " + nf.format(this.props.swr*100) + "%)"}
                              onChange={this.handlePercentageInput}/>
             </FormGroup>
         </form>

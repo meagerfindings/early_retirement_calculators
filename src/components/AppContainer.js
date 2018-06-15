@@ -8,13 +8,19 @@ class AppContainer extends Component {
         this.state = {
             core_expenses: 36000,
             comfortable_expenses: 50000,
-            current_savings: 0,
+            current_savings: 3789+25000,
+            roi: .08,
+            swr: .04
             }
         }
 
     handleExpenseInput = (value) => {
         this.setState(value)
     };
+
+    static roundPercent(value) {
+        return Math.round(value * 100 * 100)/100
+    }
 
     render(){
         return <div>
@@ -27,8 +33,11 @@ class AppContainer extends Component {
             <h3>FI Calculations</h3>
             <FiStagesContainer current={this.state.current_savings}
                                core={this.state.core_expenses}
-                               comfort={this.state.comfortable_expenses} />
-            <i>*Assumes 8% ROI.</i>
+                               comfort={this.state.comfortable_expenses}
+                               roi={this.state.roi}
+                               swr={this.state.swr} />
+            <i>*Calculated with {AppContainer.roundPercent(this.state.roi)}% ROI
+                and {AppContainer.roundPercent(this.state.swr)}% SWR.</i>
         </div>
     }
 }

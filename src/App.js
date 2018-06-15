@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import AppContainer from "./components/AppContainer";
+import PageHeader from "react-bootstrap/es/PageHeader";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Early Retirement</h1>
-        </header>
+        <PageHeader className="App-header">
+          Early Retirement
+        </PageHeader>
       <AppContainer />
       </div>
     );

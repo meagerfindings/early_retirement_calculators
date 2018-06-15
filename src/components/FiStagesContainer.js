@@ -7,12 +7,28 @@ class FiStagesContainer extends Component {
         super(props);
         this.state = {
             fiStages: {
+                threeMonth: {
+                    id: 'threeMonth',
+                    name: 'Three Month Emergency Fund',
+                    multiplier: (3/12),
+                    type: 'core',
+                    description: '3 months of core expenses. Only for emergencies.',
+                    nextStage: 'sixMonth'
+                },
+                sixMonth: {
+                    id: 'sixMonth',
+                    name: 'Six Month Emergency Fund',
+                    multiplier: (6/12),
+                    type: 'core',
+                    description: '6 months of core expenses. Only for emergencies.',
+                    nextStage: 'coreFreedom'
+                },
                 coreFreedom: {
                     id: 'coreFreedom',
                     name: 'Core Freedom',
                     multiplier: 3,
                     type: 'core',
-                    description: '3x core expenses, AKA F-You Money. 2-3 years of expenses covered.',
+                    description: '3 years of core expenses covered. AKA: f-you Money.',
                     nextStage: 'comfortFreedom'
                 },
                 comfortFreedom: {
@@ -20,7 +36,7 @@ class FiStagesContainer extends Component {
                     name: 'Comfort Freedom',
                     multiplier: 3,
                     type: 'comfort',
-                    description: '3x comfort expenses, AKA F-You Money. 2-3 years of expenses covered.',
+                    description: '3 years of comfortable expenses covered. AKA: f-you money.',
                     nextStage: 'halfFi'
                 },
                 halfFi: {

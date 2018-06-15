@@ -6,7 +6,7 @@ class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            core_expenses: 35970,
+            core_expenses: 36000,
             comfortable_expenses: 50000,
             current_savings: 0,
             }

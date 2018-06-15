@@ -50,12 +50,15 @@ class FiStage extends Component {
             <div>
                 <h5>Goal Progress:</h5>
                 <FiProgressBar current={this.props.current}
-                               goal={next_stage_amount} />
+                               goal={stage_amount} />
             </div>
             <div>
                 <p>Once at {this.props.name}, your investments would carry you to {this.props.next_stage.name} in {stage_interest.years} years with
                     ${stage_interest.amount}*. <br/>
                 </p>
+            </div>
+            <div>
+                <p>Safe withdrawal rate of 4%: ${nf.format(Math.round(stage_amount * .04))}</p>
             </div>
         </ListGroupItem>
     }

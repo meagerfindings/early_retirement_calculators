@@ -13,7 +13,10 @@ class FiStagesContainer extends Component {
                     multiplier: (3/12),
                     type: 'core',
                     description: '3 months of core expenses. Only for emergencies.',
-                    nextStage: 'sixMonth'
+                    nextStage: 'sixMonth',
+                    display_swr: false,
+                    display_goal_progress: true,
+                    display_goal_interest: false
                 },
                 sixMonth: {
                     id: 'sixMonth',
@@ -21,7 +24,10 @@ class FiStagesContainer extends Component {
                     multiplier: (6/12),
                     type: 'core',
                     description: '6 months of core expenses. Only for emergencies.',
-                    nextStage: 'coreFreedom'
+                    nextStage: 'coreFreedom',
+                    display_swr: false,
+                    display_goal_progress: true,
+                    display_goal_interest: false
                 },
                 coreFreedom: {
                     id: 'coreFreedom',
@@ -29,7 +35,10 @@ class FiStagesContainer extends Component {
                     multiplier: 3,
                     type: 'core',
                     description: '3 years of core expenses covered. AKA: f-you Money.',
-                    nextStage: 'comfortFreedom'
+                    nextStage: 'comfortFreedom',
+                    display_swr: false,
+                    display_goal_progress: true,
+                    display_goal_interest: false
                 },
                 comfortFreedom: {
                     id: 'comfortFreedom',
@@ -37,7 +46,10 @@ class FiStagesContainer extends Component {
                     multiplier: 3,
                     type: 'comfort',
                     description: '3 years of comfortable expenses covered. AKA: f-you money.',
-                    nextStage: 'halfFi'
+                    nextStage: 'halfFi',
+                    display_swr: false,
+                    display_goal_progress: true,
+                    display_goal_interest: false
                 },
                 halfFi: {
                     id: 'halfFi',
@@ -45,7 +57,10 @@ class FiStagesContainer extends Component {
                     multiplier: 12.5,
                     type: "comfort",
                     description: "12.5x comfortable expenses",
-                    nextStage: 'leanFi'
+                    nextStage: 'leanFi',
+                    display_swr: true,
+                    display_goal_progress: true,
+                    display_goal_interest: true
                 },
                 leanFi: {
                     id: 'leanFi',
@@ -53,7 +68,10 @@ class FiStagesContainer extends Component {
                     multiplier: 25,
                     type: "core",
                     description: "25x core expenses",
-                    nextStage: 'flexFi'
+                    nextStage: 'flexFi',
+                    display_swr: true,
+                    display_goal_progress: true,
+                    display_goal_interest: true
                 },
                 flexFi: {
                     id: 'flexFi',
@@ -61,7 +79,10 @@ class FiStagesContainer extends Component {
                     multiplier: 20,
                     type: "comfort",
                     description: "20x comfortable expenses",
-                    nextStage: 'fi'
+                    nextStage: 'fi',
+                    display_swr: true,
+                    display_goal_progress: true,
+                    display_goal_interest: true
                 },
                 fi: {
                     id: 'fi',
@@ -69,7 +90,10 @@ class FiStagesContainer extends Component {
                     multiplier: 25,
                     type: "comfort",
                     description: "25x comfortable expenses",
-                    nextStage: 'fatFi'
+                    nextStage: 'fatFi',
+                    display_swr: true,
+                    display_goal_progress: true,
+                    display_goal_interest: true
                 },
                 fatFi: {
                     id: 'fatFi',
@@ -77,26 +101,12 @@ class FiStagesContainer extends Component {
                     multiplier: 30,
                     type: "comfort",
                     description: "30x comfortable expenses",
-                    nextStage: 'fatFi'
+                    nextStage: 'fatFi',
+                    display_swr: true,
+                    display_goal_progress: true,
+                    display_goal_interest: false,
                 }
             }
-        }
-    }
-
-    //TODO: ability to not display Fat Fi next goal information.
-
-    calculateInterestYears(current, future) {
-        let nf = new Intl.NumberFormat();
-        let temp = current;
-        let years = 0;
-
-        for (years; temp <= future; years++) {
-            temp = (temp * .08) + temp;
-        }
-
-        return {
-            years: years,
-            amount: nf.format(temp)
         }
     }
 
@@ -117,72 +127,18 @@ class FiStagesContainer extends Component {
                                       next_stage={stages[stage.nextStage]}
                                       current={this.props.current}
                                       core={this.props.core}
-                                      comfort={this.props.comfort}/>);
+                                      comfort={this.props.comfort}
+                                      swr={stage.display_swr}
+                                      progress={stage.display_goal_progress}
+                                      growth_to_next={stage.display_goal_interest} />);
             index ++
         }
         return stage_array
     }
 
     render(){
-
-        // let nf = new Intl.NumberFormat();
-        // let halfFi = this.props.comfort * 12.5;
-        // let leanFi = this.props.core * 25;
-        // let flexFi= this.props.comfort * 20;
-        // let fi = this.props.comfort* 25;
-        // let fatFi = this.props.comfort* 30;
-
-        // Calculate Interest
-        // let halfInterest = this.calculateInterestYears(halfFi, leanFi);
-        // let leanInterest = this.calculateInterestYears(leanFi, flexFi);
-        // let flexInterest = this.calculateInterestYears(flexFi, fi);
-        // let fiInterest = this.calculateInterestYears(fi, fatFi);
-
         return <ListGroup>
             {this.createStages()}
-
-            {/*<ListGroupItem>*/}
-                {/*<h4>Half FI: ${nf.format(halfFi)}</h4>*/}
-                {/*<i>12.5x comfortable expenses</i>*/}
-                {/*<FiProgressBar current={this.props.current}*/}
-                               {/*goal={halfFi} />*/}
-                {/*<div>*/}
-                    {/*<p>Interest alone will carry you to Lean Fi in {halfInterest.years} years with*/}
-                        {/*${halfInterest.amount}*. <br/>*/}
-                    {/*</p>*/}
-                {/*</div>*/}
-            {/*</ListGroupItem>*/}
-            {/*<ListGroupItem>*/}
-                {/*<h4>Lean FI: ${nf.format(leanFi)}</h4>*/}
-                {/*<i>25x core expenses</i>*/}
-                {/*<div>*/}
-                    {/*<p>Interest alone will carry you to Flex Fi in {leanInterest.years} years, with*/}
-                        {/*${leanInterest.amount}*. <br/>*/}
-                    {/*</p>*/}
-                {/*</div>*/}
-            {/*</ListGroupItem>*/}
-            {/*<ListGroupItem>*/}
-                {/*<h4>Flex FI: ${nf.format(flexFi)}</h4>*/}
-                {/*<i>20x comfortable expenses</i>*/}
-                {/*<div>*/}
-                    {/*<p>Interest alone will carry you to Fi in {flexInterest.years} years,*/}
-                        {/*with {flexInterest.amount}*. <br/>*/}
-                    {/*</p>*/}
-                {/*</div>*/}
-            {/*</ListGroupItem>*/}
-            {/*<ListGroupItem>*/}
-                {/*<h4>FI: ${nf.format(fi)}</h4>*/}
-                {/*<i>25x comfortable expenses</i>*/}
-                {/*<div>*/}
-                    {/*<p>Interest alone will carry you to Fat Fi in {fiInterest.years} years, with*/}
-                        {/*${fiInterest.amount}*. <br/>*/}
-                    {/*</p>*/}
-                {/*</div>*/}
-            {/*</ListGroupItem>*/}
-            {/*<ListGroupItem>*/}
-                {/*<h4>FAT FI: ${nf.format(fatFi)}</h4>*/}
-                {/*<i>30x comfortable expenses</i>*/}
-            {/*</ListGroupItem>*/}
         </ListGroup>
     }
 }

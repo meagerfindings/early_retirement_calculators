@@ -1,3 +1,15 @@
 .App {
  padding: 20px;
 }
+
+.fi-stage-growth-to-next-false {
+    display: none;
+}
+
+.fi-stage-progress-bar-false {
+    display: none;
+}
+
+.fi-stage-swr-false {
+    display: none;
+}

@@ -140,7 +140,7 @@ class FiStagesContainer extends Component {
     }
 
     render(){
-        return <Grid fluid="true" className="fi-Stages-Container">
+        return <Grid className="fi-Stages-Container">
             <Row className="show-grid">
                 {this.createStages()}
             </Row>

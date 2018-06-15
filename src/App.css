@@ -2,6 +2,11 @@
     padding: 20px;
 }
 
+.editLink {
+    alignment: right;
+    cursor: pointer;
+}
+
 .fi-Single-Stage {
     border-radius: 25px;
     padding: 2px;

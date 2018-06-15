@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ListGroupItem from "react-bootstrap/es/ListGroupItem";
 import FiProgressBar from "./FiProgressBar";
+import Row from "react-bootstrap/es/Row";
+import Col from "react-bootstrap/es/Col";
 
 class FiStage extends Component {
 
@@ -44,28 +46,30 @@ class FiStage extends Component {
         let next_stage_amount = next_expenses * this.props.next_stage.multiplier;
         let stage_interest = this.calculateInterestYears(stage_amount, next_stage_amount);
 
-        return <ListGroupItem>
-            <h3>{this.props.name}: ${nf.format(stage_amount)}</h3>
-            <i>{this.props.description}</i>
-            <div className={"fi-stage-swr-" + this.props.swr_display}>
-                <p>Annual safe withdrawal rate: ${
-                    nf.format(Math.round(stage_amount * this.props.swr))
-                }
-                </p>
+        return <Col xs={4} md={6} lg={6}>
+            <div className="fi-Single-Stage">
+                <h3>{this.props.name}: ${nf.format(stage_amount)}</h3>
+                <i>{this.props.description}</i>
+                <div className={"fi-stage-swr-" + this.props.swr_display}>
+                    <p>Annual safe withdrawal rate: ${
+                        nf.format(Math.round(stage_amount * this.props.swr))
+                    }
+                    </p>
+                </div>
+                <div className={"fi-stage-progress-bar-" + this.props.progress_display}>
+                    <br/>
+                    <b>Current Progress towards {this.props.name}:</b>
+                    <FiProgressBar current={this.props.current}
+                                   goal={stage_amount} />
+                </div>
+                <div className={"fi-stage-growth-to-next-" + this.props.growth_to_next_display}>
+                    <b>Reaching the next stage:</b>
+                    <p>Once at {this.props.name}, your investments would carry you to {this.props.next_stage.name} in {stage_interest.years} years with
+                        ${stage_interest.amount}. <br/>
+                    </p>
+                </div>
             </div>
-            <div className={"fi-stage-progress-bar-" + this.props.progress_display}>
-                <br/>
-                <b>Current Progress towards {this.props.name}:</b>
-                <FiProgressBar current={this.props.current}
-                               goal={stage_amount} />
-            </div>
-            <div className={"fi-stage-growth-to-next-" + this.props.growth_to_next_display}>
-                <b>Reaching the next stage:</b>
-                <p>Once at {this.props.name}, your investments would carry you to {this.props.next_stage.name} in {stage_interest.years} years with
-                    ${stage_interest.amount}. <br/>
-                </p>
-            </div>
-        </ListGroupItem>
+        </Col>
     }
 }
 

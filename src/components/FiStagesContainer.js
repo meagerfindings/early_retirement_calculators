@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ListGroup from "react-bootstrap/es/ListGroup";
 import FiStage from "./FiStage";
+import Grid from "react-bootstrap/es/Grid";
+import Row from "react-bootstrap/es/Row";
 
 class FiStagesContainer extends Component {
     constructor(props) {
@@ -139,9 +141,11 @@ class FiStagesContainer extends Component {
     }
 
     render(){
-        return <ListGroup>
-            {this.createStages()}
-        </ListGroup>
+        return <Grid fluid="true" className="fi-Stages-Container">
+            <Row className="show-grid">
+                {this.createStages()}
+            </Row>
+        </Grid>
     }
 }
 

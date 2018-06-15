@@ -2,6 +2,14 @@
  padding: 20px;
 }
 
+.fi-Single-Stage {
+    border-radius: 25px;
+    padding: 2px;
+}
+.fi-Stages-Container {
+    alignment: center;
+}
+
 .fi-stage-growth-to-next-false {
     display: none;
 }

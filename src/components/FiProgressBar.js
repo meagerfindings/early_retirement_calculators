@@ -2,10 +2,19 @@ import React, { Component } from 'react'
 import ProgressBar from "react-bootstrap/es/ProgressBar";
 
 class FiProgressBar extends Component {
+    static roundPercent(value) {
+        if (value >= 1) return 100;
+        return Math.round(value * 100 * 10) / 10
+    }
+
     render(){
-        let completion_amount = Math.round((this.props.current/this.props.goal)*100);
+        let completion_amount = FiProgressBar.roundPercent(this.props.current/this.props.goal);
+
+        let status;
+        if(completion_amount === 100) status = "success"; else status = "info";
+
         return <div>
-            <ProgressBar now={completion_amount} label={`${completion_amount}%`}/>
+            <ProgressBar bsStyle={status} now={completion_amount} label={`${completion_amount}%`}/>
         </div>
     }
 }

@@ -36,7 +36,7 @@ class InputForm extends Component {
                 <Alert bsStyle="danger" key={"swr_warning"}>
                     <strong>Potentially Unsafe Withdrawal Rate!</strong>
                     <br/>
-                    Withdrawal Rates above 4% have the potential to deplete your portfolio at an increased rate.
+                    Withdrawal Rates above 4% have the potential to deplete your portfolio at an increased rate. More information <a href="https://www.madfientist.com/safe-withdrawal-rate/" target="blank">here</a>.
                 </Alert>
             )
         }

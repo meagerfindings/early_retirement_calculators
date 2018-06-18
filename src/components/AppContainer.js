@@ -10,8 +10,8 @@ class AppContainer extends Component {
             core_expenses: 36000,
             comfortable_expenses: 50000,
             current_savings: 30000,
-            roi: .08,
-            swr: .05,
+            roi: .07,
+            swr: .04,
             open: true
             }
         }

@@ -62,8 +62,10 @@ class FiStage extends Component {
                 <h3>{this.props.name}: ${nf.format(stage_amount)}</h3>
                 <i>{this.props.description}</i>
                 <div className={"fi-stage-swr-" + this.props.swr_display}>
-                    <SafeWithdrawalRate stage_amount={stage_amount}
-                                        swr={this.props.swr} />
+                    <SafeWithdrawalRate portfolio={stage_amount}
+                                        swr={this.props.swr}
+                                        roi={this.props.roi}
+                                        expenses={stage_expenses} />
                 </div>
                 <div className={"fi-stage-progress-bar-" + this.props.progress_display}>
                     <br/>

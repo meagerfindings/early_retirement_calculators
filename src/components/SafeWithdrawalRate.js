@@ -7,27 +7,24 @@ class SafeWithdrawalRate extends Component {
 
 
     alertSWR() {
-        console.log(this.props.swr);
         let warnings = [];
 
         if (this.props.swr > .04) {
             warnings.push(
                 <Alert bsStyle="danger" key={"1"}>
                     <strong>Potentially Unsafe Withdrawal Rate!</strong>
-                    <p>
-                        Withdrawal Rates above 4% have the potential to deplete your portfolio at an increased rate.
-                        <br/>
-                        <br/>
-                        At a rate of <strong>{AppContainer.roundPercent(this.props.swr)}%</strong>, you may deplete your portfolio in <strong>[X] years and [X] months</strong>.
-                    </p>
+                    Withdrawal Rates above 4% have the potential to deplete your portfolio at an increased rate.
+                    <br/>
+                    <br/>
+                    At a rate of <strong>{AppContainer.roundPercent(this.props.swr)}%</strong>, you may deplete your portfolio in <strong>[X] years and [X] months</strong>.
                 </Alert>
             )
         } else if (this.props.swr < .04) {
-            warnings.push(<p>
+            warnings.push(<span key={"2"}>
                 <br/>
-                This conservative rate will allow your portfolio to continue growing while you withdraw money.
+                This conservative rate may allow your portfolio to continue growing while you withdraw money.
                 At a rate of <strong>{AppContainer.roundPercent(this.props.swr)}%</strong>, ....
-                </p>
+                </span>
             )
         }
 
@@ -40,10 +37,9 @@ class SafeWithdrawalRate extends Component {
         return <div>
             <br/>
             <strong>Withdrawal Rate:</strong>
-            <p>
-                With your withdrawal rate of {AppContainer.roundPercent(this.props.swr)}%, you would withdraw <strong>${nf.format(Math.round(this.props.stage_amount * this.props.swr))}</strong> per year.
-                {this.alertSWR()}
-            </p>
+            <br/>
+            With your withdrawal rate of {AppContainer.roundPercent(this.props.swr)}%, you would withdraw <strong>${nf.format(Math.round(this.props.stage_amount * this.props.swr))}</strong> per year.
+            {this.alertSWR()}
         </div>
     }
 }

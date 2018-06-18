@@ -7,6 +7,7 @@ import Row from "react-bootstrap/es/Row";
 import Grid from "react-bootstrap/es/Grid";
 import OverlayTrigger from "react-bootstrap/es/OverlayTrigger";
 import Tooltip from "react-bootstrap/es/Tooltip";
+import Alert from "react-bootstrap/es/Alert";
 
 class InputForm extends Component {
 
@@ -25,6 +26,21 @@ class InputForm extends Component {
                 {input}
             </Tooltip>
         )
+    }
+
+    alertSWR() {
+        let warnings = [];
+
+        if (this.props.swr > .04) {
+            warnings.push(
+                <Alert bsStyle="danger" key={"swr_warning"}>
+                    <strong>Potentially Unsafe Withdrawal Rate!</strong>
+                    <br/>
+                    Withdrawal Rates above 4% have the potential to deplete your portfolio at an increased rate.
+                </Alert>
+            )
+        }
+        return warnings
     }
 
     render(){
@@ -99,6 +115,7 @@ class InputForm extends Component {
                                              placeholder={"Initial Assumption: " + nf.format(this.props.swr*100) + "%"}
                                              onChange={this.handlePercentageInput}/>
                             </OverlayTrigger>
+                            {this.alertSWR()}
                         </Col>
                     </Row>
                 </FormGroup>

@@ -28,7 +28,6 @@ class AppContainer extends Component {
         return <div>
 
             <span className="editLink" onClick={() => this.setState({ open: !this.state.open })}>
-                <h3>Financial Independence Stages</h3>
                 <i>Edit Variables and Inputs</i>
             </span>
             <Collapse in={this.state.open}>
@@ -41,6 +40,7 @@ class AppContainer extends Component {
                                onExpenseInput={this.handleExpenseInput}/>
                 </div>
             </Collapse>
+            <h3>Financial Independence Stages</h3>
             <FiStagesContainer current={this.state.current_savings}
                                core={this.state.core_expenses}
                                comfort={this.state.comfortable_expenses}

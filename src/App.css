@@ -7,9 +7,24 @@
     cursor: pointer;
 }
 
-.fi-Single-Stage {
+.input-form-container {
+    padding: 5px;
+    margin-top: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background: whitesmoke;
+    box-shadow: cadetblue;
     border-radius: 25px;
-    padding: 2px;
+}
+
+.fi-Single-Stage {
+    padding: 5px;
+    margin-top: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background: whitesmoke;
+    box-shadow: cadetblue;
+    border-radius: 25px;
 }
 .fi-Stages-Container {
     /*alignment: center;*/
@@ -26,3 +41,4 @@
 .fi-stage-swr-false {
     display: none;
 }
+

@@ -56,9 +56,9 @@ class FiStage extends Component {
         let next_stage_amount = next_expenses * this.props.next_stage.multiplier;
         let stage_interest = this.calculateInterestYears(stage_amount, next_stage_amount);
 
-        return <Col xs={4} md={6} lg={6}>
+        return <Col xs={9} md={6} lg={6}>
             <div className="fi-Single-Stage">
-                <h4>{this.props.name}: ${nf.format(stage_amount)}</h4>
+                <h3>{this.props.name}: ${nf.format(stage_amount)}</h3>
                 <i>{this.props.description}</i>
                 <div className={"fi-stage-swr-" + this.props.swr_display}>
                     <p>Annual safe withdrawal rate: ${

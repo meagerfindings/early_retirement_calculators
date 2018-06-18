@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FiProgressBar from "./FiProgressBar";
 import Col from "react-bootstrap/es/Col";
+import SafeWithdrawalRate from "./SafeWithdrawalRate";
 
 class FiStage extends Component {
 
@@ -61,10 +62,8 @@ class FiStage extends Component {
                 <h3>{this.props.name}: ${nf.format(stage_amount)}</h3>
                 <i>{this.props.description}</i>
                 <div className={"fi-stage-swr-" + this.props.swr_display}>
-                    <p>Annual safe withdrawal rate: ${
-                        nf.format(Math.round(stage_amount * this.props.swr))
-                    }
-                    </p>
+                    <SafeWithdrawalRate stage_amount={stage_amount}
+                                        swr={this.props.swr} />
                 </div>
                 <div className={"fi-stage-progress-bar-" + this.props.progress_display}>
                     <br/>

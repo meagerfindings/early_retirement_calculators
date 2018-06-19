@@ -12,7 +12,8 @@ import Alert from "react-bootstrap/es/Alert";
 class InputForm extends Component {
 
     handleInput = (e) => {
-        this.props.onExpenseInput({[e.target.name]: e.target.value})
+        let value = e.target.value * 100 / 100;
+        this.props.onExpenseInput({[e.target.name]: value})
     };
 
     handlePercentageInput = (e) => {
@@ -36,7 +37,8 @@ class InputForm extends Component {
                 <Alert bsStyle="danger" key={"swr_warning"}>
                     <strong>Potentially Unsafe Withdrawal Rate!</strong>
                     <br/>
-                    Withdrawal Rates above 4% have the potential to deplete your portfolio at an increased rate. More information <a href="https://www.madfientist.com/safe-withdrawal-rate/" target="blank">here</a>.
+                    Withdrawal Rates above 4% have the potential to deplete your portfolio at an increased rate. More information <a href="https://www.madfientist.com/safe-withdrawal-rate/"
+                                                                                                                                     target="blank">here</a>.
                 </Alert>
             )
         }

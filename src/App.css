@@ -26,6 +26,11 @@
     box-shadow: cadetblue;
     border-radius: 25px;
 }
+
+.fi-stage-eta-false {
+    display: none;
+}
+
 .fi-Stages-Container {
     /*alignment: center;*/
 }

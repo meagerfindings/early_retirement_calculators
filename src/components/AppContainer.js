@@ -12,7 +12,8 @@ class AppContainer extends Component {
             current_savings: 30000,
             roi: .07,
             swr: .04,
-            open: true
+            open: true,
+            monthly_savings: 1000
             }
         }
 
@@ -27,6 +28,7 @@ class AppContainer extends Component {
     static monthsAndYears(months) {
         let year_string = '';
         let month_string = '';
+        let and = '';
 
         let years = (months - (months % 12)) / 12;
         months = months % 12;
@@ -43,8 +45,12 @@ class AppContainer extends Component {
             month_string = months + " months"
         }
 
+        if (years > 0 && months > 0){
+            and = ' and ';
+        }
+
         return <i>
-            {year_string + " " + month_string}
+            {year_string + and + month_string}
         </i>
     }
 
@@ -68,6 +74,7 @@ class AppContainer extends Component {
             <FiStagesContainer current={this.state.current_savings}
                                core={this.state.core_expenses}
                                comfort={this.state.comfortable_expenses}
+                               monthly_savings={this.state.monthly_savings}
                                roi={this.state.roi}
                                swr={this.state.swr} />
             <i>*Calculated with {AppContainer.roundPercent(this.state.roi)}% ROI

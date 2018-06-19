@@ -3,6 +3,7 @@ import FiProgressBar from "./FiProgressBar";
 import Col from "react-bootstrap/es/Col";
 import SafeWithdrawalRate from "./SafeWithdrawalRate";
 import AppContainer from "./AppContainer";
+import FiStageEta from "./FiStageEta";
 
 class FiStage extends Component {
 
@@ -70,7 +71,12 @@ class FiStage extends Component {
                     <b>Current Progress towards {this.props.name}:</b>
                     <FiProgressBar current={this.props.current}
                                    goal={stage_amount} />
+                    <FiStageEta current={this.props.current}
+                                goal={stage_amount}
+                                monthly_savings={this.props.monthly_savings}
+                                roi={this.props.roi} />
                 </div>
+                <br/>
                 <div className={"fi-stage-growth-to-next-" + this.props.growth_to_next_display}>
                     <b>Reaching the next stage:</b>
                     <p>Once at {this.props.name}, your investments would carry you to {this.props.next_stage.name} in {AppContainer.monthsAndYears(stage_interest.months)} with

@@ -132,6 +132,7 @@ class FiStagesContainer extends Component {
                                       swr_display={stage.display_swr}
                                       progress_display={stage.display_goal_progress}
                                       growth_to_next_display={stage.display_goal_interest}
+                                      monthly_savings={this.props.monthly_savings}
                                       roi={this.props.roi || undefined}
                                       swr={this.props.swr || undefined} />);
             index ++

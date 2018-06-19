@@ -24,6 +24,30 @@ class AppContainer extends Component {
         return Math.round(value * 100 * 100)/100
     }
 
+    static monthsAndYears(months) {
+        let year_string = '';
+        let month_string = '';
+
+        let years = (months - (months % 12)) / 12;
+        months = months % 12;
+
+        if (years === 1) {
+            year_string = "1 year"
+        } else if (years > 1) {
+            year_string = years + " years"
+        }
+
+        if (months === 1) {
+            month_string = "1 month"
+        } else if (months > 1) {
+            month_string = months + " months"
+        }
+
+        return <i>
+            {year_string + " " + month_string}
+        </i>
+    }
+
     render(){
         return <div>
 

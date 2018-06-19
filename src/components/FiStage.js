@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import FiProgressBar from "./FiProgressBar";
 import Col from "react-bootstrap/es/Col";
 import SafeWithdrawalRate from "./SafeWithdrawalRate";
+import AppContainer from "./AppContainer";
 
 class FiStage extends Component {
 
@@ -18,11 +19,7 @@ class FiStage extends Component {
             }
         }
 
-        let years = (months - (months % 12)) / 12;
-        months = months % 12;
-        
         return {
-            years: years,
             months: months,
             amount: nf.format(Math.round(temp))
         }
@@ -76,7 +73,7 @@ class FiStage extends Component {
                 </div>
                 <div className={"fi-stage-growth-to-next-" + this.props.growth_to_next_display}>
                     <b>Reaching the next stage:</b>
-                    <p>Once at {this.props.name}, your investments would carry you to {this.props.next_stage.name} in {stage_interest.years} years and {stage_interest.months} months with
+                    <p>Once at {this.props.name}, your investments would carry you to {this.props.next_stage.name} in {AppContainer.monthsAndYears(stage_interest.months)} with
                         ${stage_interest.amount}. <br/>
                     </p>
                 </div>

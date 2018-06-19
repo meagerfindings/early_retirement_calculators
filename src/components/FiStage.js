@@ -5,22 +5,28 @@ import SafeWithdrawalRate from "./SafeWithdrawalRate";
 
 class FiStage extends Component {
 
-    calculateInterestYears(current, future) {
+    calculateInterestTime(current, future) {
         let nf = new Intl.NumberFormat();
         let temp = current;
-        let years = 0;
-
+        let months = 0;
         if (current > 0 && future > 0) {
             if (typeof current === "undefined" || typeof current === "undefined") {
             } else {
-                for (years; temp <= future; years++) {
-                    temp = (temp * this.props.roi) + temp;
+                for (months; temp <= future; months++) {
+                    temp = (temp * (this.props.roi / 12)) + temp;
                 }
             }
         }
 
+        let years = (months - (months % 12)) / 12;
+        months = months % 12;
+
+        console.log("years: " +years);
+        console.log("months: " +months);
+
         return {
             years: years,
+            months: months,
             amount: nf.format(Math.round(temp))
         }
     }
@@ -55,7 +61,7 @@ class FiStage extends Component {
 
         let stage_amount = stage_expenses * this.props.multiplier;
         let next_stage_amount = next_expenses * this.props.next_stage.multiplier;
-        let stage_interest = this.calculateInterestYears(stage_amount, next_stage_amount);
+        let stage_interest = this.calculateInterestTime(stage_amount, next_stage_amount);
 
         return <Col xs={9} md={6} lg={6}>
             <div className="fi-Single-Stage">
@@ -75,7 +81,7 @@ class FiStage extends Component {
                 </div>
                 <div className={"fi-stage-growth-to-next-" + this.props.growth_to_next_display}>
                     <b>Reaching the next stage:</b>
-                    <p>Once at {this.props.name}, your investments would carry you to {this.props.next_stage.name} in {stage_interest.years} years with
+                    <p>Once at {this.props.name}, your investments would carry you to {this.props.next_stage.name} in {stage_interest.years} years and {stage_interest.months} months with
                         ${stage_interest.amount}. <br/>
                     </p>
                 </div>

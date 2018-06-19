@@ -52,7 +52,7 @@ class InputForm extends Component {
             <form className="input-form-container">
                 <FormGroup controlId="formBasicText">
                     <Row>
-                        <Col xs={9} md={6} lg={6}>
+                        <Col md={6} lg={6}>
                             <ControlLabel>Annual Core Expenses</ControlLabel>
                             <OverlayTrigger placement="bottom"
                                             overlay={
@@ -64,7 +64,7 @@ class InputForm extends Component {
                                              onChange={this.handleInput}/>
                             </OverlayTrigger>
                         </Col>
-                        <Col xs={9} md={6} lg={6}>
+                        <Col md={6} lg={6}>
                             <ControlLabel>Annual Comfortable Expenses</ControlLabel>
                             <OverlayTrigger placement="bottom"
                                             overlay={
@@ -79,7 +79,7 @@ class InputForm extends Component {
                     </Row>
                     <br/>
                     <Row>
-                        <Col xs={9} md={6} lg={6}>
+                        <Col md={6} lg={6}>
                             <ControlLabel>Current Savings</ControlLabel>
                             <OverlayTrigger placement="bottom"
                                             overlay={
@@ -91,7 +91,7 @@ class InputForm extends Component {
                                             onChange={this.handleInput}/>
                             </OverlayTrigger>
                         </Col>
-                        <Col xs={9} md={6} lg={6}>
+                        <Col md={6} lg={6}>
                             <ControlLabel>Monthly Savings</ControlLabel>
                             <OverlayTrigger placement="bottom"
                                             overlay={
@@ -106,7 +106,7 @@ class InputForm extends Component {
                     </Row>
                     <br/>
                     <Row>
-                        <Col xs={9} md={6} lg={6}>
+                        <Col md={6} lg={6}>
                             <ControlLabel>Rate of Return on Investments %</ControlLabel>
                             <OverlayTrigger placement="bottom"
                                             overlay={
@@ -118,7 +118,7 @@ class InputForm extends Component {
                                              onChange={this.handlePercentageInput}/>
                             </OverlayTrigger>
                         </Col>
-                        <Col xs={9} md={6} lg={6}>
+                        <Col md={6} lg={6}>
                             <ControlLabel>Safe Withdrawal Rate %</ControlLabel>
                             <OverlayTrigger placement="bottom"
                                             overlay={

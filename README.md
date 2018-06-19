@@ -2,9 +2,9 @@
 Financial Independence Retire Early Calculators built using React JS.
 
 ## Todo:
-- Add savings rate & salary OR monthly savings.
-- Create ETA to goals based on savings projections.
-- fix "and [X] months"
+- ~~Add monthly savings input~~
+- Add option to add salary and then use percentage to override monthly savings input
+- Add Descriptions of all assumptions / inputs.
 
 ## Dependencies:
 - React 

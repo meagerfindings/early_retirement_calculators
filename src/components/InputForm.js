@@ -12,7 +12,7 @@ import Alert from "react-bootstrap/es/Alert";
 class InputForm extends Component {
 
     handleInput = (e) => {
-        let value = e.target.value * 100 / 100;
+        let value = e.target.value * 100 / 100; // this prevents the input from becoming a string...
         this.props.onExpenseInput({[e.target.name]: value})
     };
 
@@ -60,7 +60,7 @@ class InputForm extends Component {
                                             }>
                                 <FormControl type="number"
                                              name='core_expenses'
-                                             placeholder={"Initial Assumption: $" + nf.format(this.props.core_expenses)}
+                                             placeholder={"Initial Assumption: $" + nf.format(this.props.core_expenses) + " yearly"}
                                              onChange={this.handleInput}/>
                             </OverlayTrigger>
                         </Col>
@@ -72,7 +72,7 @@ class InputForm extends Component {
                                             }>
                                 <FormControl type="number"
                                              name='comfortable_expenses'
-                                             placeholder={"Initial Assumption: $" + nf.format(this.props.comfortable_expenses)}
+                                             placeholder={"Initial Assumption: $" + nf.format(this.props.comfortable_expenses) + " yearly"}
                                              onChange={this.handleInput}/>
                             </OverlayTrigger>
                         </Col>
@@ -87,8 +87,20 @@ class InputForm extends Component {
                                             }>
                                 <FormControl type="number"
                                              name='current_savings'
-                                             placeholder={"Initial Assumption: $" + nf.format(this.props.current_savings)}
+                                             placeholder={"Initial Assumption: $" + nf.format(this.props.current_savings) + " invested"}
                                             onChange={this.handleInput}/>
+                            </OverlayTrigger>
+                        </Col>
+                        <Col xs={9} md={6} lg={6}>
+                            <ControlLabel>Monthly Savings</ControlLabel>
+                            <OverlayTrigger placement="bottom"
+                                            overlay={
+                                                InputForm.tooltip("Enter the amount you add to your portfolio each month.")
+                                            }>
+                                <FormControl type="number"
+                                             name='monthly_savings'
+                                             placeholder={"Initial Assumption: $" + nf.format(this.props.monthly_savings) + " monthly"}
+                                             onChange={this.handleInput}/>
                             </OverlayTrigger>
                         </Col>
                     </Row>
@@ -102,7 +114,7 @@ class InputForm extends Component {
                                             }>
                                 <FormControl type="number"
                                              name='roi'
-                                             placeholder={"Initial Assumption: " + nf.format(this.props.roi*100) + "%"}
+                                             placeholder={"Initial Assumption: " + nf.format(this.props.roi*100) + "% yearly"}
                                              onChange={this.handlePercentageInput}/>
                             </OverlayTrigger>
                         </Col>
@@ -114,7 +126,7 @@ class InputForm extends Component {
                                             }>
                                 <FormControl type="number"
                                              name='swr'
-                                             placeholder={"Initial Assumption: " + nf.format(this.props.swr*100) + "%"}
+                                             placeholder={"Initial Assumption: " + nf.format(this.props.swr*100) + "% yearly"}
                                              onChange={this.handlePercentageInput}/>
                             </OverlayTrigger>
                             {this.alertSWR()}

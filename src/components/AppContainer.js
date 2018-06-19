@@ -13,7 +13,7 @@ class AppContainer extends Component {
             roi: .07,
             swr: .04,
             open: true,
-            monthly_savings: 1000
+            monthly_savings: 500,
             }
         }
 
@@ -65,6 +65,7 @@ class AppContainer extends Component {
                     <InputForm core_expenses={this.state.core_expenses}
                                comfortable_expenses={this.state.comfortable_expenses}
                                current_savings={this.state.current_savings}
+                               monthly_savings={this.state.monthly_savings}
                                roi={this.state.roi}
                                swr={this.state.swr}
                                onExpenseInput={this.handleExpenseInput}/>

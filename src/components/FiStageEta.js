@@ -16,7 +16,7 @@ class FiStageEta extends Component {
             return null
         }
 
-        let months = 0;
+        let months = 1;
         let temp = current;
 
         if (temp < goal) {
@@ -26,16 +26,14 @@ class FiStageEta extends Component {
                 temp = temp + (temp * (this.props.roi/12));
             }
 
-            return <div>
-                {AppContainer.monthsAndYears(months)}.
-            </div>
+            return AppContainer.monthsAndYears(months)
         }
     }
 
 
     render(){
         return <div className={this.checkIfRelevant()}>
-            With your present savings rate you may reach this stage in {this.estimateTimeRemaining(this.props.current, this.props.goal, this.props.monthly_savings)}
+            With your present savings rate you may reach this stage in {this.estimateTimeRemaining(this.props.current, this.props.goal, this.props.monthly_savings)}.
         </div>
     }
 }

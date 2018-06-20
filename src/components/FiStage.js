@@ -10,7 +10,7 @@ class FiStage extends Component {
     calculateInterestTime(current, future) {
         let nf = new Intl.NumberFormat();
         let temp = current;
-        let months = 0;
+        let months = 1;
         if (current > 0 && future > 0) {
             if (typeof current === "undefined" || typeof current === "undefined") {
             } else {

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import FiStage from "./FiStage";
 import Grid from "react-bootstrap/es/Grid";
 import Row from "react-bootstrap/es/Row";
+import FiChart from "./FiChart";
+import {Col} from "react-bootstrap";
 
 class FiStagesContainer extends Component {
     constructor(props) {
@@ -144,6 +146,17 @@ class FiStagesContainer extends Component {
         return <Grid className="fi-Stages-Container">
             <Row className="show-grid">
                 {this.createStages()}
+            </Row>
+            <Row>
+                <Col md={12} lg={12}>
+                    <br/>
+                    <FiChart fiStages={this.state.fiStages}
+                             deposit={this.props.monthly_savings}
+                             comfort={this.props.comfort}
+                             core={this.props.core}
+                             roi={this.props.roi}
+                             current={this.props.current}/>
+                </Col>
             </Row>
         </Grid>
     }

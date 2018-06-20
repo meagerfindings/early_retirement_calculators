@@ -12,8 +12,8 @@ class AppContainer extends Component {
             current_savings: 30000,
             roi: .07,
             swr: .04,
-            open: true,
-            monthly_savings: 500,
+            input_open: false,
+            monthly_savings: 3000,
             }
         }
 
@@ -57,10 +57,10 @@ class AppContainer extends Component {
     render(){
         return <div>
 
-            <span className="editLink" onClick={() => this.setState({ open: !this.state.open })}>
+            <span className="editLink" onClick={() => this.setState({ input_open: !this.state.input_open })}>
                 <i>Edit Variables and Inputs</i>
             </span>
-            <Collapse in={this.state.open}>
+            <Collapse in={this.state.input_open}>
                 <div>
                     <InputForm core_expenses={this.state.core_expenses}
                                comfortable_expenses={this.state.comfortable_expenses}

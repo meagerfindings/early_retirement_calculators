@@ -12,13 +12,19 @@ import Alert from "react-bootstrap/es/Alert";
 class InputForm extends Component {
 
     handleInput = (e) => {
-        let value = e.target.value * 100 / 100; // this prevents the input from becoming a string...
-        this.props.onExpenseInput({[e.target.name]: value})
+        if (e.target.value !== "0" && e.target.value !== "") { // prevents empty strings and 0's from being entered, causing the app to crash
+            console.log(typeof e.target.value);
+            console.log(e.target.value);
+            let value = e.target.value * 100 / 100; // this prevents the input from becoming a string...
+            this.props.onExpenseInput({[e.target.name]: value})
+        }
     };
 
     handlePercentageInput = (e) => {
-        let value = e.target.value / 100;
-        this.props.onExpenseInput({[e.target.name]: value})
+        if (e.target.value !== "0" && e.target.value !== "") { // prevents empty strings and 0's from being entered, causing the app to crash
+            let value = e.target.value / 100;
+            this.props.onExpenseInput({[e.target.name]: value})
+        }
     };
 
     static tooltip(input) {

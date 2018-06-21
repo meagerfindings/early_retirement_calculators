@@ -5,7 +5,8 @@ import {
     XAxis,
     AreaChart,
     Area,
-    ResponsiveContainer, ReferenceLine
+    ResponsiveContainer,
+    ReferenceLine,
 } from 'recharts';
 import FiChartReference from "./FiChartReference";
 
@@ -106,7 +107,6 @@ console.log(<FiChartReference stage_expenses={stage_expenses}
             <ResponsiveContainer width="100%" height={400}>
             <AreaChart data={chart_data}>
                 <XAxis dataKey="name"/>
-                {/*<YAxis/>*/}
                 <Tooltip/>
                 <Legend/>
 

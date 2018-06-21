@@ -159,19 +159,21 @@ class FiStagesContainer extends Component {
         console.log("Fi: " + fiStages.fi.amount);
 
         return <Grid className="fi-Stages-Container">
-            <Row className="show-grid">
-                {this.createStages(fiStages)}
-            </Row>
             <Row>
                 <Col md={12} lg={12}>
-                    <br/>
-                    <FiChart fiStages={fiStages}
-                             deposit={this.props.monthly_savings}
-                             comfort={this.props.comfort}
-                             core={this.props.core}
-                             roi={this.props.roi}
-                             current={this.props.current}/>
+                    <div className="fi-chart-container">
+                        <br/>
+                        <FiChart fiStages={fiStages}
+                                 deposit={this.props.monthly_savings}
+                                 comfort={this.props.comfort}
+                                 core={this.props.core}
+                                 roi={this.props.roi}
+                                 current={this.props.current}/>
+                    </div>
                 </Col>
+            </Row>
+            <Row className="show-grid">
+                {this.createStages(fiStages)}
             </Row>
         </Grid>
     }

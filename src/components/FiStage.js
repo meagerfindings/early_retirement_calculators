@@ -28,35 +28,8 @@ class FiStage extends Component {
 
     render(){
         let nf = new Intl.NumberFormat();
-
-        let stage_type = this.props.type;
-        let next_stage_type = this.props.next_stage.type;
-
-        let stage_expenses;
-        if (stage_type === 'core'){
-            stage_expenses = this.props.core;
-        } else {
-            stage_expenses = this.props.comfort;
-        }
-        if (typeof stage_expenses === 'undefined') {
-            stage_expenses = 0.0001;
-        }
-
-        let next_expenses;
-
-        if (next_stage_type === 'core'){
-            next_expenses = this.props.core;
-        } else {
-            next_expenses = this.props.comfort;
-        }
-
-        if (typeof next_expenses === 'undefined') {
-            next_expenses = 0.0001;
-        }
-
-        let stage_amount = stage_expenses * this.props.multiplier;
-        let next_stage_amount = next_expenses * this.props.next_stage.multiplier;
-        let stage_interest = this.calculateInterestTime(stage_amount, next_stage_amount);
+        let stage_amount = this.props.stage_amount;
+        let stage_interest = this.calculateInterestTime(stage_amount, this.props.next_stage.amount);
 
         return <Col md={6} lg={6}>
             <div className="fi-Single-Stage">

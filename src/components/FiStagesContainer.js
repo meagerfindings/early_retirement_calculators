@@ -20,6 +20,7 @@ class FiStagesContainer extends Component {
                                       type={stage.type}
                                       description={stage.description}
                                       multiplier={stage.multiplier}
+                                      stage_amount={stage.amount}
                                       next_stage={stages[stage.nextStage]}
                                       current={this.props.current}
                                       core={this.props.core || undefined}
@@ -155,8 +156,6 @@ class FiStagesContainer extends Component {
                 color: "green"
             }
         };
-
-        console.log("Fi: " + fiStages.fi.amount);
 
         return <Grid className="fi-Stages-Container">
             <Row>

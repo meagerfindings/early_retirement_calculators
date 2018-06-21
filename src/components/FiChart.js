@@ -21,19 +21,7 @@ class FiChart extends Component {
         for (let key in stages) {
             let stage = stages[key];
             if (stage.id === 'fatFi') {
-                let stage_type = this.props.type;
-
-                let stage_expenses;
-                if (stage_type === 'core') {
-                    stage_expenses = this.props.core;
-                } else {
-                    stage_expenses = this.props.comfort;
-                }
-                if (typeof stage_expenses === 'undefined') {
-                    stage_expenses = 0.0001;
-                }
-
-                let goal = stage.multiplier * stage_expenses;
+                let goal = stage.amount;
                 let counter = 0;
                 if (temp < goal) {
 
@@ -54,7 +42,7 @@ class FiChart extends Component {
                 }
                 for (counter; counter < 11; counter++) {
                     months++;
-                    temp = temp + (this.props.deposit);
+                    temp = temp + this.props.deposit;
                     temp = temp + (temp * (this.props.roi / 12));
                 }
                 chart_data.push(

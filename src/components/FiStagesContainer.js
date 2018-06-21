@@ -12,7 +12,6 @@ class FiStagesContainer extends Component {
         let index = 1;
 
         for(let key in stages) {
-
             let stage = stages[key];
 
             stage_array.push(<FiStage key={stage.id + index}

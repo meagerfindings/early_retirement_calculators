@@ -8,7 +8,6 @@ import {
     ResponsiveContainer,
     ReferenceLine,
 } from 'recharts';
-import FiChartReference from "./FiChartReference";
 
 class FiChart extends Component {
     estimateTimeRemaining() {
@@ -55,44 +54,12 @@ class FiChart extends Component {
         return chart_data;
     }
 
-    generateReferenceLabels(){
-        let label_array = [];
-        let stages = this.props.fiStages;
-
-        for (let key in stages) {
-            let stage = stages[key];
-
-            if (stage.id !== 'threeMonth') {
-                let stage_type = this.props.type;
-                let stage_expenses;
-                if (stage_type === 'core') {
-                    stage_expenses = this.props.core;
-                } else {
-                    stage_expenses = this.props.comfort;
-                }
-                if (typeof stage_expenses === 'undefined') {
-                    stage_expenses = 0.0001;
-                }
-console.log(<FiChartReference stage_expenses={stage_expenses}
-                              label={stage.name}
-                              key={stage_expenses}/>);
-                label_array.push(
-                    <FiChartReference stage_expenses={stage_expenses}
-                                      label={stage.name}
-                                      key={stage_expenses}/>);
-            }
-        }
-
-        return label_array
-    }
-
-
     render() {
         let chart_data = this.estimateTimeRemaining();
         let stages = this.props.fiStages;
+        let nf = new Intl.NumberFormat();
 
-        return <div>
-            <ResponsiveContainer width="100%" height={400}>
+        return <ResponsiveContainer width="100%" height={400}>
             <AreaChart data={chart_data}>
                 <XAxis dataKey="name"/>
                 <Tooltip/>
@@ -105,53 +72,49 @@ console.log(<FiChartReference stage_expenses={stage_expenses}
                     </linearGradient>
                 </defs>
 
-                {/*{this.generateReferenceLabels()}*/}
-
-                {/*dynamically create these*/}
                 <ReferenceLine y={stages.sixMonth.amount}
-                               label={stages.sixMonth.name}
+                               label={stages.sixMonth.name + ": $" + nf.format(stages.sixMonth.amount)}
                                stroke={stages.sixMonth.color}
                                strokeDasharray="3 3" />
 
                 <ReferenceLine y={stages.coreFreedom.amount}
-                               label={stages.coreFreedom.name}
+                               label={stages.coreFreedom.name + ": $" + nf.format(stages.coreFreedom.amount)}
                                stroke={stages.coreFreedom.color}
                                strokeDasharray="3 3" />
 
                 <ReferenceLine y={stages.comfortFreedom.amount}
-                               label={stages.comfortFreedom.name}
+                               label={stages.comfortFreedom.name + ": $" + nf.format(stages.comfortFreedom.amount)}
                                stroke={stages.comfortFreedom.color}
                                strokeDasharray="3 3" />
 
                 <ReferenceLine y={stages.halfFi.amount}
-                               label={stages.halfFi.name}
+                               label={stages.halfFi.name + ": $" + nf.format(stages.halfFi.amount)}
                                stroke={stages.halfFi.color}
                                strokeDasharray="3 3" />
 
                 <ReferenceLine y={stages.leanFi.amount}
-                               label={stages.leanFi.name}
+                               label={stages.leanFi.name + ": $" + nf.format(stages.leanFi.amount)}
                                stroke={stages.leanFi.color}
                                strokeDasharray="3 3" />
 
                 <ReferenceLine y={stages.flexFi.amount}
-                               label={stages.flexFi.name}
+                               label={stages.flexFi.name + ": $" + nf.format(stages.flexFi.amount)}
                                stroke={stages.flexFi.color}
                                strokeDasharray="3 3" />
 
                 <ReferenceLine y={stages.fi.amount}
-                               label={stages.fi.name}
+                               label={stages.fi.name + ": $" + nf.format(stages.fi.amount)}
                                stroke={stages.fi.color}
                                strokeDasharray="3 3" />
 
                 <ReferenceLine y={stages.fatFi.amount}
-                               label={stages.fatFi.name}
+                               label={stages.fatFi.name + ": $" + nf.format(stages.fatFi.amount)}
                                stroke={stages.fatFi.color}
                                strokeDasharray="3 3" />
 
                 <Area type="monotone" dataKey="NetWorth" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
             </AreaChart>
         </ResponsiveContainer>
-        </div>
     }
 }
 

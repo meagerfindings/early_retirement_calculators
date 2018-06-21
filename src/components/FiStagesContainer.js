@@ -112,7 +112,7 @@ class FiStagesContainer extends Component {
                 display_swr: true,
                 display_goal_progress: true,
                 display_goal_interest: true,
-                amount: this.props.comfort * 25,
+                amount: this.props.core * 25,
                 color: "green"
             },
             flexFi: {

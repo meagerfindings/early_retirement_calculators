@@ -8,8 +8,8 @@ Financial Independence Retire Early Calculators built using React JS.
     - prevent last item from having next goal progress 
 - ~~add charts to visualize progress towards goals.~~
     - ~~maybe use: [https://github.com/reactjs/react-chartjs](https://github.com/reactjs/react-chartjs)~~
-    - Make reference lines dynamic so they respect changes to fistages
-- move fiStages into render from state 
+    - ~~Make reference lines dynamic so they respect changes to fistages~~
+- ~~move fiStages into render from state ~~
 
 ## Dependencies:
 - React 

@@ -9,6 +9,7 @@ Financial Independence Retire Early Calculators built using React JS.
 - ~~add charts to visualize progress towards goals.~~
     - ~~maybe use: [https://github.com/reactjs/react-chartjs](https://github.com/reactjs/react-chartjs)~~
     - Make reference lines dynamic so they respect changes to fistages
+- move fiStages into render from state 
 
 ## Dependencies:
 - React 

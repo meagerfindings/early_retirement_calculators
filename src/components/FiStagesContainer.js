@@ -6,115 +6,8 @@ import FiChart from "./FiChart";
 import {Col} from "react-bootstrap";
 
 class FiStagesContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            fiStages: {
-                threeMonth: {
-                    id: 'threeMonth',
-                    name: 'Three Month Emergency Fund',
-                    multiplier: (3/12),
-                    type: 'core',
-                    description: '3 months of core expenses. Only for emergencies.',
-                    nextStage: 'sixMonth',
-                    display_swr: false,
-                    display_goal_progress: true,
-                    display_goal_interest: false
-                },
-                sixMonth: {
-                    id: 'sixMonth',
-                    name: 'Six Month Emergency Fund',
-                    multiplier: (6/12),
-                    type: 'core',
-                    description: '6 months of core expenses. Only for emergencies.',
-                    nextStage: 'coreFreedom',
-                    display_swr: false,
-                    display_goal_progress: true,
-                    display_goal_interest: false
-                },
-                coreFreedom: {
-                    id: 'coreFreedom',
-                    name: 'Core Freedom',
-                    multiplier: 3,
-                    type: 'core',
-                    description: '3 years of core expenses covered. AKA: f-you Money.',
-                    nextStage: 'comfortFreedom',
-                    display_swr: false,
-                    display_goal_progress: true,
-                    display_goal_interest: false
-                },
-                comfortFreedom: {
-                    id: 'comfortFreedom',
-                    name: 'Comfort Freedom',
-                    multiplier: 3,
-                    type: 'comfort',
-                    description: '3 years of comfortable expenses covered. AKA: f-you money.',
-                    nextStage: 'halfFi',
-                    display_swr: false,
-                    display_goal_progress: true,
-                    display_goal_interest: false
-                },
-                halfFi: {
-                    id: 'halfFi',
-                    name: "Half Fi",
-                    multiplier: 12.5,
-                    type: "comfort",
-                    description: "12.5x comfortable expenses",
-                    nextStage: 'leanFi',
-                    display_swr: true,
-                    display_goal_progress: true,
-                    display_goal_interest: true
-                },
-                leanFi: {
-                    id: 'leanFi',
-                    name: "Lean Fi",
-                    multiplier: 25,
-                    type: "core",
-                    description: "25x core expenses",
-                    nextStage: 'flexFi',
-                    display_swr: true,
-                    display_goal_progress: true,
-                    display_goal_interest: true
-                },
-                flexFi: {
-                    id: 'flexFi',
-                    name: "Flex Fi",
-                    multiplier: 20,
-                    type: "comfort",
-                    description: "20x comfortable expenses",
-                    nextStage: 'fi',
-                    display_swr: true,
-                    display_goal_progress: true,
-                    display_goal_interest: true
-                },
-                fi: {
-                    id: 'fi',
-                    name: "Fi",
-                    multiplier: 25,
-                    type: "comfort",
-                    description: "25x comfortable expenses",
-                    nextStage: 'fatFi',
-                    display_swr: true,
-                    display_goal_progress: true,
-                    display_goal_interest: true
-                },
-                fatFi: {
-                    id: 'fatFi',
-                    name: "Fat Fi",
-                    multiplier: 30,
-                    type: "comfort",
-                    description: "30x comfortable expenses",
-                    nextStage: 'fatFi',
-                    display_swr: true,
-                    display_goal_progress: true,
-                    display_goal_interest: false,
-                }
-            }
-        }
-    }
 
-    createStages() {
-        let stages = this.state.fiStages;
+    createStages(stages) {
         let stage_array = [];
         let index = 1;
 
@@ -143,14 +36,136 @@ class FiStagesContainer extends Component {
     }
 
     render(){
+        let fiStages = {
+            threeMonth: {
+                id: 'threeMonth',
+                name: 'Three Month Emergency Fund',
+                multiplier: (3/12),
+                type: 'core',
+                description: '3 months of core expenses. Only for emergencies.',
+                nextStage: 'sixMonth',
+                display_swr: false,
+                display_goal_progress: true,
+                display_goal_interest: false,
+                amount: this.props.core * (3/12),
+                color: "red"
+            },
+            sixMonth: {
+                id: 'sixMonth',
+                name: 'Six Month Emergency Fund',
+                multiplier: (6/12),
+                type: 'core',
+                description: '6 months of core expenses. Only for emergencies.',
+                nextStage: 'coreFreedom',
+                display_swr: false,
+                display_goal_progress: true,
+                display_goal_interest: false,
+                amount: this.props.core * (6/12),
+                color: "red"
+            },
+            coreFreedom: {
+                id: 'coreFreedom',
+                name: 'Core Freedom',
+                multiplier: 3,
+                type: 'core',
+                description: '3 years of core expenses covered. AKA: f-you Money.',
+                nextStage: 'comfortFreedom',
+                display_swr: false,
+                display_goal_progress: true,
+                display_goal_interest: false,
+                amount: this.props.core * (3),
+                color: "orange"
+            },
+            comfortFreedom: {
+                id: 'comfortFreedom',
+                name: 'Comfort Freedom',
+                multiplier: 3,
+                type: 'comfort',
+                description: '3 years of comfortable expenses covered. AKA: f-you money.',
+                nextStage: 'halfFi',
+                display_swr: false,
+                display_goal_progress: true,
+                display_goal_interest: false,
+                amount: this.props.comfort * (3),
+                color: "orange"
+            },
+            halfFi: {
+                id: 'halfFi',
+                name: "Half Fi",
+                multiplier: 12.5,
+                type: "comfort",
+                description: "12.5x comfortable expenses",
+                nextStage: 'leanFi',
+                display_swr: true,
+                display_goal_progress: true,
+                display_goal_interest: true,
+                amount: this.props.comfort * 12.5,
+                color: "blue"
+            },
+            leanFi: {
+                id: 'leanFi',
+                name: "Lean Fi",
+                multiplier: 25,
+                type: "core",
+                description: "25x core expenses",
+                nextStage: 'flexFi',
+                display_swr: true,
+                display_goal_progress: true,
+                display_goal_interest: true,
+                amount: this.props.comfort * 25,
+                color: "green"
+            },
+            flexFi: {
+                id: 'flexFi',
+                name: "Flex Fi",
+                multiplier: 20,
+                type: "comfort",
+                description: "20x comfortable expenses",
+                nextStage: 'fi',
+                display_swr: true,
+                display_goal_progress: true,
+                display_goal_interest: true,
+                amount: this.props.comfort * 20,
+                color: "green"
+            },
+            fi: {
+                id: 'fi',
+                name: "Fi",
+                multiplier: 25,
+                type: "comfort",
+                description: "25x comfortable expenses",
+                nextStage: 'fatFi',
+                display_swr: true,
+                display_goal_progress: true,
+                display_goal_interest: true,
+                amount: this.props.comfort * 25,
+                color: "green"
+            },
+            fatFi: {
+                id: 'fatFi',
+                name: "Fat Fi",
+                multiplier: 30,
+                type: "comfort",
+                description: "30x comfortable expenses",
+                nextStage: 'fatFi',
+                display_swr: true,
+                display_goal_progress: true,
+                display_goal_interest: false,
+                amount: this.props.comfort * 30,
+                color: "green"
+            }
+        };
+
+        console.log("Fi: " + fiStages.fi.amount);
+
         return <Grid className="fi-Stages-Container">
             <Row className="show-grid">
-                {this.createStages()}
+                {this.createStages(fiStages)}
             </Row>
             <Row>
                 <Col md={12} lg={12}>
                     <br/>
-                    <FiChart fiStages={this.state.fiStages}
+                    <FiChart fiStages={fiStages}
                              deposit={this.props.monthly_savings}
                              comfort={this.props.comfort}
                              core={this.props.core}

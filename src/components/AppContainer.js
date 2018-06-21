@@ -61,7 +61,7 @@ class AppContainer extends Component {
                 <i>Edit Variables and Inputs</i>
             </span>
             <Collapse in={this.state.input_open}>
-                <div>
+                <div>  {/*necessary for collapse to work*/}
                     <InputForm core_expenses={this.state.core_expenses}
                                comfortable_expenses={this.state.comfortable_expenses}
                                current_savings={this.state.current_savings}
@@ -78,8 +78,6 @@ class AppContainer extends Component {
                                monthly_savings={this.state.monthly_savings}
                                roi={this.state.roi}
                                swr={this.state.swr} />
-            <i>*Calculated with {AppContainer.roundPercent(this.state.roi)}% ROI
-                and {AppContainer.roundPercent(this.state.swr)}% SWR.</i>
         </div>
     }
 }

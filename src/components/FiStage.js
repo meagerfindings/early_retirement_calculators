@@ -51,8 +51,8 @@ class FiStage extends Component {
                 </div>
                 <br/>
                 <div className={"fi-stage-growth-to-next-" + this.props.growth_to_next_display}>
-                    <b>Reaching the next stage:</b>
-                    <p>Once at {this.props.name}, your investments would carry you to {this.props.next_stage.name} in {AppContainer.monthsAndYears(stage_interest.months)} with
+                    <b>Passively reaching the next stage:</b>
+                    <p>Once at {this.props.name}, your investments may carry you to {this.props.next_stage.name} in {AppContainer.monthsAndYears(stage_interest.months)} resulting in
                         ${stage_interest.amount}. <br/>
                     </p>
                 </div>

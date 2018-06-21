@@ -13,8 +13,6 @@ class InputForm extends Component {
 
     handleInput = (e) => {
         if (e.target.value !== "0" && e.target.value !== "") { // prevents empty strings and 0's from being entered, causing the app to crash
-            console.log(typeof e.target.value);
-            console.log(e.target.value);
             let value = e.target.value * 100 / 100; // this prevents the input from becoming a string...
             this.props.onExpenseInput({[e.target.name]: value})
         }
@@ -37,7 +35,6 @@ class InputForm extends Component {
 
     alertSWR() {
         let warnings = [];
-
         if (this.props.swr > .04) {
             warnings.push(
                 <Alert bsStyle="danger" key={"swr_warning"}>
@@ -59,7 +56,7 @@ class InputForm extends Component {
                 <FormGroup controlId="formBasicText">
                     <Row>
                         <Col md={6} lg={6}>
-                            <ControlLabel>Annual Core Expenses</ControlLabel>
+                        <ControlLabel>Annual Core Expenses</ControlLabel>
                             <OverlayTrigger placement="bottom"
                                             overlay={
                                                 InputForm.tooltip("Enter your annual core expense amount, non-discretionary spending.")
@@ -72,69 +69,69 @@ class InputForm extends Component {
                         </Col>
                         <Col md={6} lg={6}>
                             <ControlLabel>Annual Comfortable Expenses</ControlLabel>
-                            <OverlayTrigger placement="bottom"
-                                            overlay={
-                                                InputForm.tooltip("Enter your annual comfortable expense amount. This includes your discretionary spending.")
-                                            }>
-                                <FormControl type="number"
-                                             name='comfortable_expenses'
-                                             placeholder={"Initial Assumption: $" + nf.format(this.props.comfortable_expenses) + " yearly"}
-                                             onChange={this.handleInput}/>
-                            </OverlayTrigger>
+                                <OverlayTrigger placement="bottom"
+                                                overlay={
+                                                    InputForm.tooltip("Enter your annual comfortable expense amount. This includes your discretionary spending.")
+                                                }>
+                                    <FormControl type="number"
+                                                 name='comfortable_expenses'
+                                                 placeholder={"Initial Assumption: $" + nf.format(this.props.comfortable_expenses) + " yearly"}
+                                                 onChange={this.handleInput}/>
+                                </OverlayTrigger>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col md={6} lg={6}>
-                            <ControlLabel>Current Savings</ControlLabel>
-                            <OverlayTrigger placement="bottom"
-                                            overlay={
-                                                InputForm.tooltip("Enter your current savings or net worth.")
-                                            }>
-                                <FormControl type="number"
-                                             name='current_savings'
-                                             placeholder={"Initial Assumption: $" + nf.format(this.props.current_savings) + " invested"}
-                                            onChange={this.handleInput}/>
-                            </OverlayTrigger>
+                            <ControlLabel>Current Investments</ControlLabel>
+                                <OverlayTrigger placement="bottom"
+                                                overlay={
+                                                    InputForm.tooltip("Enter your current savings or net worth.")
+                                                }>
+                                    <FormControl type="number"
+                                                 name='current_savings'
+                                                 placeholder={"Initial Assumption: $" + nf.format(this.props.current_savings) + " invested"}
+                                                onChange={this.handleInput}/>
+                                </OverlayTrigger>
                         </Col>
                         <Col md={6} lg={6}>
-                            <ControlLabel>Monthly Savings</ControlLabel>
-                            <OverlayTrigger placement="bottom"
-                                            overlay={
-                                                InputForm.tooltip("Enter the amount you add to your portfolio each month.")
-                                            }>
-                                <FormControl type="number"
-                                             name='monthly_savings'
-                                             placeholder={"Initial Assumption: $" + nf.format(this.props.monthly_savings) + " monthly"}
-                                             onChange={this.handleInput}/>
-                            </OverlayTrigger>
+                            <ControlLabel>Monthly Investments</ControlLabel>
+                                <OverlayTrigger placement="bottom"
+                                                overlay={
+                                                    InputForm.tooltip("Enter the amount you add to your portfolio each month.")
+                                                }>
+                                    <FormControl type="number"
+                                                 name='monthly_savings'
+                                                 placeholder={"Initial Assumption: $" + nf.format(this.props.monthly_savings) + " monthly"}
+                                                 onChange={this.handleInput}/>
+                                </OverlayTrigger>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col md={6} lg={6}>
                             <ControlLabel>Rate of Return on Investments %</ControlLabel>
-                            <OverlayTrigger placement="bottom"
-                                            overlay={
-                                                InputForm.tooltip("Enter preferred Rate of Return on Investments.")
-                                            }>
-                                <FormControl type="number"
-                                             name='roi'
-                                             placeholder={"Initial Assumption: " + nf.format(this.props.roi*100) + "% yearly"}
-                                             onChange={this.handlePercentageInput}/>
-                            </OverlayTrigger>
+                                <OverlayTrigger placement="bottom"
+                                                overlay={
+                                                    InputForm.tooltip("Enter preferred Rate of Return on Investments.")
+                                                }>
+                                    <FormControl type="number"
+                                                 name='roi'
+                                                 placeholder={"Initial Assumption: " + nf.format(this.props.roi*100) + "% yearly"}
+                                                 onChange={this.handlePercentageInput}/>
+                                </OverlayTrigger>
                         </Col>
                         <Col md={6} lg={6}>
                             <ControlLabel>Safe Withdrawal Rate %</ControlLabel>
-                            <OverlayTrigger placement="bottom"
-                                            overlay={
-                                                InputForm.tooltip("Enter preferred Safe Withdrawal Rate.")
-                                            }>
-                                <FormControl type="number"
-                                             name='swr'
-                                             placeholder={"Initial Assumption: " + nf.format(this.props.swr*100) + "% yearly"}
-                                             onChange={this.handlePercentageInput}/>
-                            </OverlayTrigger>
+                                <OverlayTrigger placement="bottom"
+                                                overlay={
+                                                    InputForm.tooltip("Enter preferred Safe Withdrawal Rate.")
+                                                }>
+                                    <FormControl type="number"
+                                                 name='swr'
+                                                 placeholder={"Initial Assumption: " + nf.format(this.props.swr*100) + "% yearly"}
+                                                 onChange={this.handlePercentageInput}/>
+                                </OverlayTrigger>
                             {this.alertSWR()}
                         </Col>
                     </Row>

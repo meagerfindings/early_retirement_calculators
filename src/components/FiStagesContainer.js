@@ -4,6 +4,7 @@ import Grid from "react-bootstrap/es/Grid";
 import Row from "react-bootstrap/es/Row";
 import FiChart from "./FiChart";
 import {Col} from "react-bootstrap";
+import AppContainer from "./AppContainer";
 
 class FiStagesContainer extends Component {
 
@@ -156,7 +157,7 @@ class FiStagesContainer extends Component {
             }
         };
 
-        return <Grid className="fi-Stages-Container">
+        return <Grid className="fi-Stages-Container" fluid={true}>
             <Row>
                 <Col md={12} lg={12}>
                     <div className="fi-chart-container">
@@ -172,6 +173,21 @@ class FiStagesContainer extends Component {
             </Row>
             <Row className="show-grid">
                 {this.createStages(fiStages)}
+            </Row>
+            <Row>
+                <Col md={6} lg={12}>
+                    <div className={"more-info"}>
+                        <i>*Calculated with {AppContainer.roundPercent(this.props.roi)}% ROI
+                            and {AppContainer.roundPercent(this.props.swr)}% SWR.</i>
+                        <br/>
+                        <i>** Calculations do not account for inflation.</i>
+                        <br/>
+                        <i>*** The Fi stages represented here were inspired by <a href={"https://www.choosefi.com/032-milestones-fi/"} target={"blank"}>Choose Fi, episode 32, The Milestones of Fi.</a></i>
+                        <br/>
+                        <br/>
+                        <i>This application was built with React and you can view the source code <a href={"https://github.com/meagerfindings/early_retirement_calculators"} target={"blank"}>on GitHub.</a></i>
+                    </div>
+                </Col>
             </Row>
         </Grid>
     }

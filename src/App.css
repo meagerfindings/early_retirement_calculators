@@ -57,3 +57,13 @@
     display: none;
 }
 
+.more-info {
+    padding: 5px;
+    margin-top: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background: whitesmoke;
+    box-shadow: cadetblue;
+    border-radius: 25px;
+}
+

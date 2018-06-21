@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 // import Alert from "react-bootstrap/es/Alert";
-import AppContainer from "./AppContainer";
 
 class SafeWithdrawalRate extends Component {
 
@@ -93,9 +92,8 @@ class SafeWithdrawalRate extends Component {
 
         return <div>
             <br/>
-            <strong>Withdrawal Rate:</strong>
-            <br/>
-            With your withdrawal rate of {AppContainer.roundPercent(this.props.swr)}%, you would withdraw <strong>${nf.format(Math.round(this.props.stage_amount * this.props.swr))}</strong> per year.
+            <strong>Withdrawal Rate:</strong> ${nf.format(Math.round(this.props.stage_amount * this.props.swr))} per year
+            {/*With your withdrawal rate of {AppContainer.roundPercent(this.props.swr)}%, you would withdraw <strong>${nf.format(Math.round(this.props.stage_amount * this.props.swr))}</strong> per year.*/}
             {/*{this.alertSWR()}*/}
         </div>
     }

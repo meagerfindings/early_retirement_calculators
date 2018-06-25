@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Fi Calc",
+  "name": "Financial Independence Calculations",
   "icons": [
     {
       "src": "favicon.ico",

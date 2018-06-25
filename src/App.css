@@ -3,7 +3,12 @@
 }
 
 .editLink {
-    alignment: right;
+    float: left;
+    cursor: pointer;
+}
+
+.more-info-link {
+    float: right;
     cursor: pointer;
 }
 

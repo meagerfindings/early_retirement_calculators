@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <PageHeader className="App-header">
-          Financial Independence Retire Early Calculations
+          FI Calculations
         </PageHeader>
       <AppContainer />
       </div>

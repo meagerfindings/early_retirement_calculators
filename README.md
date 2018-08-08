@@ -1,7 +1,7 @@
 # Early Retirement Calculators
 Financial Independence Retire Early Calculators built using React JS.
 
-You can visit the live site [here](https://www.earlyretirementcalc.meagerfindings.com/).
+You can visit the live site [here](https://meagerfindings.com/ficalc).
 
 ## Todo:
 - Add option to add salary and then use percentage to override monthly savings input
@@ -10,13 +10,13 @@ You can visit the live site [here](https://www.earlyretirementcalc.meagerfinding
 - ~~Link to JL collins for stock investing principles.~~
 
 ## Dependencies:
-- React 
+- React
 - React-Bootstrap
 - [recharts](http://recharts.org/#/en-US/guide/installation)
     ```
     npm install recharts    
     ```
-    
+
 ## Screenshot:
 
 ![Preview Image](preview.jpg)

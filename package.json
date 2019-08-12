@@ -2,6 +2,7 @@
   "name": "early_retirement",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://matgreten.dev/ficalc",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "chart.js": "^1.1.1",

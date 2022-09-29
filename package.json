@@ -12,7 +12,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
-    "recharts": "^1.0.0-beta.10"
+    "recharts": "^2.1.14"
   },
   "scripts": {
     "start": "react-scripts start",
